@@ -1,0 +1,90 @@
+﻿@model PostViewModel
+@using Microsoft.AspNetCore.Identity
+@using Microsoft.AspNetCore.Identity.EntityFrameworkCore
+
+<head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="~/css/normalize.css" />
+    <link rel="stylesheet" type="text/css" href="~/css/demo.css" />
+    <link rel="stylesheet" type="text/css" href="~/css/style.css" />
+    <link rel="stylesheet" type="text/css" href="~/css/card.css" id="cord" />
+    <link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.4.2/css/all.css' integrity='sha384-/rXc/GQVaYpyDdyxK+ecHPVYJSN9bmVFBvjA/9eOB+pb3F2w2N6fc5qB9Ew5yIns' crossorigin='anonymous'>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script src="~/js/avatar.js"></script>
+    <link rel="stylesheet" type="text/css" href="~/css/avatar.css" />
+</head>
+    <div class="container">
+        <div class="row">
+            <div>
+                <div class="card hovercard">
+                    <div class="card-background">
+                        <img class="card-bkimg" alt="" src="~/images/photo2.jpg">
+                    </div>
+                    <div class="useravatar">
+                        <img alt="" src="~/images/man3.png">
+                    </div>
+                    <div class="card-info">
+                        <span class="card-title">@User.Identity.Name</span>
+                    </div>
+                </div>
+
+                @foreach (var post in Model.Posts)
+                {
+                    
+                    <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 mb30">
+                        <div class="tutor-block">
+                            <div class="tutor-img">
+                                <img src="~/demoImages/@post.PostUrl">
+                            </div>
+                            <div class="tutor-content">
+                                <h5 class="tutor-title">
+                                    <a asp-controller="Post" asp-action="Details"
+                                       asp-route-id="@post.PostId">@post.Title</a>
+                                </h5>
+                                <span class="tutor-designation">(Designation title)</span>
+                                <p>Quisque malesuada nullanec mivarius efficitur. stibulum sollicitudin tortor vellorem.</p>
+                            </div>
+                        </div>
+                        <div class="social-media">
+
+                        </div>
+                    </div>
+                }
+                @*<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 mb30">
+                    <div class="tutor-block">
+                        <div class="tutor-img">
+                            <img src="~/images/im1.jpg">
+                        </div>
+                        <div class="tutor-content">
+                            <h5 class="tutor-title">Carmelo Ugalde</h5>
+                            <span class="tutor-designation">(Designation title)</span>
+                            <p>Quisque malesuada nullanec mivarius efficitur. stibulum sollicitudin tortor vellorem.</p>
+                        </div>
+                    </div>
+                    <div class="social-media">
+
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 mb30">
+                    <div class="tutor-block">
+                        <div class="tutor-img">
+                            <img src="~/images/im2.jpg">
+                        </div>
+                        <div class="tutor-content">
+                            <h5 class="tutor-title">BARBARA GILLUM</h5>
+                            <span class="tutor-designation">(Designation title)</span>
+                            <p>Asem luctus libero lerdum viverrasem faucibus nontiam vel fringillaeed euarcu samo.</p>
+                        </div>
+                    </div>
+                    <div class="social-media">
+
+                    </div>
+                </div>*@
+            </div>
+        </div>
+</div>
+
+

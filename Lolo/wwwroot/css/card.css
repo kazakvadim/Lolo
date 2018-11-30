@@ -1,0 +1,80 @@
+﻿body {
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    font-family: 'Roboto Condensed', sans-serif;
+    letter-spacing: 0px;
+    font-size: 16px;
+    color: #6c6c6c;
+    font-weight: 400;
+    line-height: 28px;
+    background-color: #141414;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    color: #dadada;
+    margin: 0px 0px 15px 0px;
+    font-weight: 300;
+    font-family: 'Oswald', sans-serif;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+}
+
+a {
+    text-decoration: none;
+    color: #6c6c6c;
+    -webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    transition: all 0.3s;
+}
+
+    a:focus, a:hover {
+        text-decoration: none;
+        color: orangered;
+    }
+
+.tutor-block {
+    background-color: #1a1a1a;
+    padding: 30px;
+}
+
+.tutor-content {
+    text-align: center;
+}
+
+.tutor-title {
+    margin-bottom: 5px;
+}
+
+.tutor-designation {
+    color: orangered;
+    display: block;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 15px;
+    font-size: 12px;
+}
+
+.tutor-img img {
+    width: 100%;
+    margin-bottom: 30px;
+}
+
+.social-media {
+    background-color: #292929;
+    padding: 12px;
+    text-align: center;
+}
+
+    .social-media span {
+        margin-right: 18px;
+        font-size: 20px;
+        font-family: "FontAwesome";
+    }
+
+.mb60 {
+    margin-bottom: 60px;
+}
+
+.mt30 {
+    margin-top: 30px;
+}

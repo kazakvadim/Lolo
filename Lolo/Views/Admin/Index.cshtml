@@ -1,0 +1,40 @@
+﻿@using Microsoft.AspNetCore.Identity
+@using Microsoft.AspNetCore.Identity.EntityFrameworkCore
+@model IEnumerable<IdentityUser>
+@*@model IEnumerable<Lolo.Models.User>*@
+
+
+@if (!Model.Any())
+{
+    <tr><td colspan="3" class="text-center">No User Accounts</td></tr>
+}
+else
+{
+    <table class="table table-condensed table-bordered" header header-content="User Management">
+        <tr>
+            <th>User name</th>
+            <th>Email</th>
+            <th>Manage</th>
+        </tr>
+        @foreach (var user in Model)
+        {
+            <tr>
+                <td>@user.UserName</td>
+                <td>@user.Email</td>
+                <td>
+                    <form asp-action="Delete" asp-route-id="@user.Id" method="post">
+                        <a class="btn btn-sm btn-warning" asp-controller="Admin" asp-action="Edit" asp-route-id="@user.Id">Edit</a>
+                        <a class="btn btn-sm btn-warning" asp-controller="Admin" asp-action="ChangePassword" asp-route-id="@user.Id">Edit password</a>
+                        <a class="btn btn-sm btn-warning" asp-controller="Admin" asp-action="EditUserRole" asp-route-userId="@user.Id">Edit role</a>
+                        <button type="submit" onclick="return confirm('Do you really want to delete this user?');" class="btn btn-sm btn-danger">
+                            Delete
+                        </button>
+                    </form>
+                </td>
+            </tr>
+        }
+    </table>
+}
+<p>
+    <a class="btn btn-sm btn-primary" asp-controller="Admin" asp-action="AddUser">Add new user</a>
+</p>

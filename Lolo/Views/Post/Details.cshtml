@@ -1,0 +1,92 @@
+﻿@model Post
+
+<head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="~/css/normalize.css" />
+    <link rel="stylesheet" type="text/css" href="~/css/demo.css" />
+    <link rel="stylesheet" type="text/css" href="~/css/style.css" />
+    <link rel="stylesheet" type="text/css" href="~/css/card.css" id="cord" />
+    <link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.4.2/css/all.css' integrity='sha384-/rXc/GQVaYpyDdyxK+ecHPVYJSN9bmVFBvjA/9eOB+pb3F2w2N6fc5qB9Ew5yIns' crossorigin='anonymous'>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script src="~/js/avatar.js"></script>
+    <script src="~/lib/signalr/dist/browser/signalr.js"></script>
+    <script src="~/js/comment.js"></script>
+    <link rel="stylesheet" type="text/css" href="~/css/avatar.css" />
+</head>
+
+<div class="myPost">
+    <style>
+        .myPost{
+            margin: 70px;
+        }
+    </style>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="tutor-img">
+                <img src="~/demoImages/@Model.PostUrl">
+            </div>
+        </div>
+        <div class="col-md-6">
+            <h2>@Model.Title</h2>
+            <style>
+                p {
+                    font-size: 22px;
+                }
+            </style>
+            <p>@Model.Content</p>
+            <p>@SharedLocalizer["Tags"]: </p>
+
+            @foreach (var tag in Model.Tags)
+            {
+                <p>#@tag.Tag.Title</p>
+            }
+
+            @if (User.Identity.Name == ViewBag.CurrentUser)
+            {
+                <form asp-controller="Post" asp-action="Delete" asp-route-id="@Model.PostId" method="post">
+                    <div class="form-group">
+                        <button type="submit" onclick="return confirm('Do you really want to delete this post?');" class="btn btn-info">
+                            @SharedLocalizer["DeletePost"]
+                        </button>
+                    </div>
+                </form>
+                <a class="btn btn-sm btn-warning" asp-controller="Post" asp-action="AddTagToPost" asp-route-id="@Model.PostId"><i class='fas fa-plus'></i> @SharedLocalizer["AddNewTag"]</a>
+                @*<li class="active"><a asp-controller="Post" asp-action="AddPostToTag" asp-route-id="@Model.PostId"><i class='fas fa-plus'></i> Add tag</a></li>*@
+            }
+        </div>
+        
+      
+    </div>
+    <div class="row">
+        @{
+            string content = "";
+        }
+        <form method="post">
+            <div class="col-sm-4">
+                <input asp-for="@content" id="commentContentId" class="form-control" />
+            </div>
+            <button class="btn btn-sm btn-warning" asp-controller="Post" id="addCommentBtn" type="submit" asp-action="AddComment"
+                    asp-route-content="@content" asp-route-postId=@Model.PostId>
+                @SharedLocalizer["AddComment"]
+            </button>
+        </form>
+        <br />
+        <p>@SharedLocalizer["Comments"]:</p>
+        <div id="@Model.PostId">
+            @if (Model.Comments.Count == 0)
+            {
+                <p> @SharedLocalizer["NoComments"]</p>
+            }
+            else
+            {
+                @foreach (var comment in Model.Comments)
+                {
+                    <p> @comment.User: @comment.Content</p>
+                }
+            }
+        </div>
+
+    </div>
+</div>

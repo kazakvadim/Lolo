@@ -1,0 +1,7 @@
+﻿@model TagViewModel
+
+
+@foreach (var tag in Model.Tags)
+{
+    <p>#@tag.Tag.Title</p>
+}
